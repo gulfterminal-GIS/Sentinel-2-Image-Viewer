@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentinel-2 Image Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar/build/vanilla-calendar.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@uvarov.frontend/vanilla-calendar/build/vanilla-calendar.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="hidden">
+        <div class="loader-container">
+            <div class="satellite-loader">
+                <div class="satellite">
+                    <div class="satellite-body"></div>
+                    <div class="satellite-panels"></div>
+                    <div class="satellite-signal"></div>
+                </div>
+                <div class="earth"></div>
+            </div>
+            <div class="loading-text">
+                <span class="loading-message">Processing Satellite Data</span>
+                <span class="loading-progress"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="map"></div>
+    <div id="controls" class="panel">
+      <div class="control-group">
+        <select id="indexSelector" class="control-input">
+            <option value="trueColor">True Color</option>
+            <option value="ndvi">NDVI (Normalized Difference Vegetation Index)</option>
+            <option value="evi">EVI (Enhanced Vegetation Index)</option>
+            <option value="ndwi">NDWI (Normalized Difference Water Index)</option>
+            <option value="ndbi">NDBI (Normalized Difference Built-up Index)</option>
+            <option value="ndmi">NDMI (Normalized Difference Moisture Index)</option>
+            <option value="falseColor">False Color Infrared</option>
+            <option value="agriculture">Agriculture</option>
+        </select>
+    <div class="date-picker-wrapper">
+        <input type="text" id="dateSelector" class="control-input" readonly/>
+        <div id="calendar"></div>
+    </div>
+      </div>
+
+      <div class="control-group">
+        <button id="loadImage" class="control-button primary">Load Sentinel Image</button>
+        <button id="clearButton" class="control-button secondary">Clear Shape</button>
+      </div>
+    </div>
+
+
+    <!-- Info Panel -->
+    <div id="infoPanel" class="panel">
+      <div class="panel-handle"></div>
+      <div class="panel-header">
+          <h3>Analysis Results</h3>
+          <button class="toggle-panel">−</button>
+      </div>
+      <div class="panel-content">
+          <div id="metadata" class="section">
+              <h4>Image Metadata</h4>
+              <div id="metadataContent"></div>
+          </div>
+          <div id="statistics" class="section">
+              <h4>Statistical Analysis</h4>
+              <div id="statsContent"></div>
+          </div>
+      </div>
+    </div>
+
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

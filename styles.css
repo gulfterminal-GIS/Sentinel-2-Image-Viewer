@@ -1,0 +1,642 @@
+/* Base Styles */
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #4CAF50;
+    --danger-color: #f44336;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --border-radius: 8px;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Map Container */
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Panel Styles */
+.panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+/* Controls Panel */
+#controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 15px;
+    width: 320px;
+}
+
+.control-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.control-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.control-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+.control-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+    width: 100%;
+}
+
+.control-button.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.control-button.secondary {
+    background: #f5f5f5;
+    color: var(--text-color);
+}
+
+.control-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Info Panel */
+#infoPanel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 400px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.panel-header h3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.toggle-panel {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.panel-content {
+    padding: 15px;
+}
+
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eef0f2;
+}
+
+.section h4 {
+    color: #2c3e50;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8ebee;
+}
+
+.stat-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #eef0f2;
+    transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+    transform: translateX(5px);
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Enhanced Health Assessment Styles */
+.health-assessment {
+    background: white;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eef0f2;
+    position: relative;
+    overflow: hidden;
+}
+
+.health-assessment::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 4px;
+}
+
+.health-assessment.excellent::before { background: #2ecc71; }
+.health-assessment.good::before { background: #3498db; }
+.health-assessment.moderate::before { background: #f1c40f; }
+.health-assessment.fair::before { background: #e67e22; }
+.health-assessment.poor::before { background: #e74c3c; }
+
+.health-assessment strong {
+    display: block;
+    color: #2c3e50;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.health-recommendations {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eef0f2;
+}
+
+.health-recommendations ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
+.health-recommendations li {
+    color: #5f6368;
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+
+/* Loading Overlay */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-container {
+    text-align: center;
+}
+
+.satellite-loader {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.satellite {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: -20px 0;
+    animation: orbit 4s linear infinite;
+}
+
+.satellite-body {
+    width: 40px;
+    height: 20px;
+    background: #3498db;
+    border-radius: 5px;
+}
+
+.satellite-panels {
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    width: 60px;
+    height: 10px;
+    background: #2ecc71;
+    border-radius: 2px;
+}
+
+.satellite-signal {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(52, 152, 219, 0.3);
+    animation: signal 2s ease-out infinite;
+}
+
+.earth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    background: #3498db;
+    border-radius: 50%;
+    box-shadow: inset -20px -20px 40px #2980b9,
+                0 0 20px rgba(52, 152, 219, 0.3);
+}
+
+.loading-text {
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+.loading-message {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.loading-progress {
+    display: inline-block;
+    position: relative;
+}
+
+.loading-progress::after {
+    content: '';
+    animation: loading 1s infinite;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(80px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(80px) rotate(-360deg);
+    }
+}
+
+@keyframes signal {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 40px;
+        height: 40px;
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+
+/* Modern Date Picker Styles */
+input[type="date"] {
+    position: relative;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Style the calendar icon and text */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.6;
+    filter: invert(0.8);
+    transition: opacity 0.2s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+    padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+    color: var(--text-color);
+    padding: 0 2px;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--text-color);
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+input[type="date"]:hover {
+    border-color: var(--primary-color);
+}
+
+
+/* Leaflet Draw Overrides */
+.leaflet-draw-toolbar a {
+    background-size: 300px 30px !important;
+    width: 34px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+}
+
+.leaflet-draw-toolbar {
+    margin-top: 0 !important;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    #controls {
+        top: auto;
+        bottom: 20px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .control-group {
+        flex-direction: column;
+    }
+
+    #infoPanel {
+        position: fixed;
+        top: auto;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        max-height: 80vh;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        border-radius: 20px 20px 0 0;
+        z-index: 9999;
+    }
+
+    #infoPanel.show {
+        transform: translateY(0);
+    }
+
+    #infoPanel.minimized {
+        transform: translateY(calc(100% - 60px));
+    }
+
+    /* Handle for dragging panel */
+    .panel-handle {
+        width: 40px;
+        height: 4px;
+        background: #ddd;
+        border-radius: 2px;
+        margin: 10px auto;
+        cursor: grab;
+    }
+
+    .panel-header {
+        padding: 15px;
+        cursor: pointer;
+    }
+
+    /* Adjust content padding */
+    .panel-content {
+        padding: 0 15px 20px;
+        max-height: calc(80vh - 60px);
+        overflow-y: auto;
+            padding: 20px;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    }
+
+
+    /* Increase touch targets for mobile */
+    .control-button, .control-input {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    /* Adjust Leaflet controls for mobile */
+    .leaflet-touch .leaflet-control-layers,
+    .leaflet-touch .leaflet-bar {
+        border: none;
+        box-shadow: var(--shadow);
+    }
+
+    .leaflet-touch .leaflet-draw-toolbar a {
+        width: 31px !important;
+        height: 31px !important;
+        line-height: 44px !important;
+    }
+}
+
+
+
+
+/* Chart Styles */
+.chart-container {
+    background: white;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin: 15px 0;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+
+
+
+
+
+
+/* Date Picker Styles */
+.date-picker-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+#dateSelector {
+    cursor: pointer;
+    background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666666'%3E%3Cpath d='M19 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z'/%3E%3C/svg%3E") no-repeat right 10px center/20px auto;
+    padding-right: 35px;
+    width: 100%;
+}
+
+.vanilla-calendar {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 300px;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    z-index: 9999;
+}
+
+.vanilla-calendar.show {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.vanilla-calendar-header {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.vanilla-calendar-week {
+    padding: 5px 0;
+}
+
+.vanilla-calendar-week span {
+    color: #666;
+    font-weight: 500;
+}
+
+.vanilla-calendar-body {
+    padding: 10px 0;
+}
+
+.vanilla-calendar-date {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.vanilla-calendar-date--active {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.vanilla-calendar-date--today {
+    border: 2px solid var(--primary-color);
+}
+
+.vanilla-calendar-date:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .vanilla-calendar {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .vanilla-calendar-date {
+        width: 42px;
+        height: 42px;
+    }
+}
