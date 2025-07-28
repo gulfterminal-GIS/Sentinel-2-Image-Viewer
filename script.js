@@ -1,6 +1,6 @@
 // Configuration
-const CLIENT_ID = "4ab4a218-8654-4453-b01e-42c9dca225a5";
-const CLIENT_SECRET = "36eeLa3oZzMQsKFrmsudrDApJdvol7vR";
+const CLIENT_ID = "d66d799d-f3cc-463d-a5f2-176666634578";
+const CLIENT_SECRET = "DPd6gOZCUJjFzurWDl9Q3VE1pegiU7vr";
 let authToken = null;
 let drawnItems = null;
 
