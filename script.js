@@ -142,7 +142,7 @@ const INDICES = {
 
 // Initialize map
 const map = L.map('map').setView([30.16904486368698, 30.36237820760166], 13);
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
